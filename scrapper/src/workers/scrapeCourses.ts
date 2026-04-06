@@ -53,7 +53,7 @@ async function scrapeCourseDetails(url: string): Promise<CourseGroup[]> {
                 if (!text) return;
 
                 const dayMatch = text.match(/^([a-ząćęłńóśźż]{2})/i);
-                const day = dayMatch ? parseDay(dayMatch[1]) : 0;
+                const day = parseDay(dayMatch?.[1] ?? '');
 
                 const { start, end } = parseTime(text);
                 const room = parseRoom(text);
