@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import type { NewsItem } from "../types/newsItem.type";
 import newsData from "../../../data/raw/news.json";
 
-const PAGE_SIZE = 15;
+const PAGE_SIZE = 5;
 
 export default function useNews() {
     const allNews = useMemo(() => {
