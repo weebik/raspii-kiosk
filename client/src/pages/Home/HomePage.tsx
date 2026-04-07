@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import useNews from "../../hooks/useNews";
 import NewsTile from "./components/NewsTile";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 
 export default function HomePage() {
     const { visibleNews, hasMore, loadMore } = useNews();
@@ -26,23 +27,22 @@ export default function HomePage() {
     }, [hasMore, loadMore]);
 
     return (
-        <div className="w-full h-full flex flex-col overflow-hidden">
-            <div className="w-full h-full  flex flex-col overflow-hidden">
-                <div
-                    ref={scrollRef}
-                    className="flex-1 overflow-y-auto transform-gpu px-10 overscroll-y-auto"
-                >
-                    <div className="text-8xl font-bold mt-10 ml-50 mb-20">Aktualności</div>
-                    {visibleNews.map((n) => (
-                        <NewsTile key={n.id} news={n} />
-                    ))}
+        <div className="w-full h-full  flex flex-col overflow-hidden transform-gpu">
+            <ScrollToTopButton containerRef={scrollRef} />
+            <div
+                ref={scrollRef}
+                className="flex-1 overflow-y-auto px-10 overscroll-y-auto [scrollbar-width:0px] [&::-webkit-scrollbar]:hidden"
+            >
+                <div className="text-8xl font-bold mt-10 ml-50 mb-20">Aktualności</div>
+                {visibleNews.map((n) => (
+                    <NewsTile key={n.id} news={n} />
+                ))}
 
-                    {hasMore && (
-                        <div className="text-center opacity-50">
-                            Wczytywanie starszych aktualności...
-                        </div>
-                    )}
-                </div>
+                {hasMore && (
+                    <div className="text-center opacity-50">
+                        Wczytywanie starszych aktualności...
+                    </div>
+                )}
             </div>
         </div>
     );

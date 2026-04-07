@@ -11,10 +11,6 @@
     --color-muted: #9ca3af;
 }
 
-@utility no-scrollbar {
-    @apply [scrollbar-width:none] [&::-webkit-scrollbar]:hidden;
-}
-
 @layer base {
 
     body,
