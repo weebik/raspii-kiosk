@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import useNews from "../../hooks/useNews";
 import NewsTile from "./components/NewsTile";
 import ScrollToTopButton from "./components/ScrollToTopButton";
+import Loader from "../../components/Loader";
 
 export default function HomePage() {
     const { visibleNews, hasMore, loadMore } = useNews();
@@ -33,15 +34,13 @@ export default function HomePage() {
                 ref={scrollRef}
                 className="flex-1 overflow-y-auto px-10 overscroll-y-auto [scrollbar-width:0px] [&::-webkit-scrollbar]:hidden"
             >
-                <div className="text-8xl font-bold mt-10 ml-50 mb-20">Aktualności</div>
+                <div className="text-8xl font-bold italic mt-10 ml-50 mb-12">Aktualności</div>
                 {visibleNews.map((n) => (
                     <NewsTile key={n.id} news={n} />
                 ))}
 
                 {hasMore && (
-                    <div className="text-center opacity-50">
-                        Wczytywanie starszych aktualności...
-                    </div>
+                    <Loader />
                 )}
             </div>
         </div>
