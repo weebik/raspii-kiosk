@@ -13,7 +13,6 @@ function DateComponent() {
 
     const hours = currentDate.getHours().toString().padStart(2, '0');
     const minutes = currentDate.getMinutes().toString().padStart(2, '0');
-    const seconds = currentDate.getSeconds().toString().padStart(2, '0');
     const date = currentDate.toLocaleDateString('pl-PL', {
         weekday: 'short',
         year: 'numeric',
@@ -22,15 +21,11 @@ function DateComponent() {
     });
 
     return (
-        <div className="text-left">
+        <div className="flex flex-col text-right min-w-50">
             <div className="text-7xl font-semibold">
-                {hours}<span className='font-semibold opacity-70'>:</span>{minutes}
-                <span className="text-3xl ml-1 relative -top-7 font-thin opacity-70">
-                    {seconds}
-                </span>
+                {hours}<span className='font-light opacity-70'>:</span>{minutes}
             </div>
-
-            <div className="text-3xl mt-1 font-medium opacity-70">
+            <div className="text-3xl font-medium opacity-70">
                 {date}
             </div>
         </div>
