@@ -1,8 +1,8 @@
-import HomePage from '../pages/Home/HomePage';
 import IiPage from '../pages/Ii/IiPage';
 import KsiPage from '../pages/Ksi/KsiPage';
 import SchedulePage from '../pages/Schedule/SchedulePage';
 import MapPage from '../pages/Map/MapPage';
+import HomePage from '../pages/Home/HomePage';
 
 export const routes = [
     { path: "/", element: <HomePage />, icon: <span>Home</span> },

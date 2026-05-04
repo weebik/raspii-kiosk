@@ -33,7 +33,7 @@ export default function ScrollToTopButton({ containerRef }: ScrollToTopButtonPro
 
     return (
         <div
-            className={`fixed top-5 self-center z-50 ${visible ? "visible" : "display-none pointer-events-none"}`}>
+            className={`fixed top-10 self-center z-50 ${visible ? "visible" : "display-none pointer-events-none"}`}>
             <button
                 onClick={scrollToTop}
                 className="relative group w-25 h-15 flex items-center justify-center">

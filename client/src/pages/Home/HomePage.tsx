@@ -1,10 +1,11 @@
 import { useEffect, useRef } from "react";
 import useNews from "../../hooks/useNews";
 import NewsTile from "./components/NewsTile";
-import ScrollToTopButton from "./components/ScrollToTopButton";
+import ScrollToTopButton from "../../components/ScrollToTopButton";
 import Loader from "../../components/Loader";
+import PageLayout from "../../components/PageLayout";
 
-export default function HomePage() {
+export default function NewsPage() {
     const { visibleNews, hasMore, loadMore } = useNews();
     const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -28,20 +29,18 @@ export default function HomePage() {
     }, [hasMore, loadMore]);
 
     return (
-        <div className="w-full h-full  flex flex-col overflow-hidden transform-gpu">
+        <div className="w-full h-full flex flex-col overflow-hidden">
             <ScrollToTopButton containerRef={scrollRef} />
             <div
                 ref={scrollRef}
-                className="flex-1 overflow-y-auto px-10 overscroll-y-auto [scrollbar-width:0px] [&::-webkit-scrollbar]:hidden"
+                className="flex-1 overflow-y-auto overscroll-y-auto [scrollbar-width:0px] [&::-webkit-scrollbar]:hidden"
             >
-                <div className="text-8xl font-bold italic mt-10 ml-50 mb-12">Aktualności</div>
-                {visibleNews.map((n) => (
-                    <NewsTile key={n.id} news={n} />
-                ))}
-
-                {hasMore && (
-                    <Loader />
-                )}
+                <PageLayout title="Aktualności">
+                    {visibleNews.map((n) => (
+                        <NewsTile key={n.id} news={n} />
+                    ))}
+                    {hasMore && <Loader />}
+                </PageLayout>
             </div>
         </div>
     );

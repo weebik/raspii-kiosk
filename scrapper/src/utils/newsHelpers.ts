@@ -30,11 +30,3 @@ export function toTitleCase(text: string): string {
         })
         .join(' ');
 }
-
-export function formatMarkdown(text: string): string {
-    return text
-        .replace(/\[\d+\]:\s*https?:\/\/\S+/g, "")
-        .replace(/\[([^\]]+)\]\[\d+\]/g, "$1")
-        .replace(/\[([^\]]+)\]\((.*?)\)/g, "$1")
-        .trim();
-}
